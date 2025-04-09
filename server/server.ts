@@ -1,14 +1,19 @@
+//! express IMPORTS
 import express, { Request, NextFunction, Response } from "express";
-import endpoints from '../endpoints.json' assert {type: 'json'};
 const app = express();
 
-// endpoints documentation:
+//! endpoints IMPORTS
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
+const endpoints = require("../endpoints.json");
+
+//? endpoints documentation:
 app.get("/api", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const data = await res.status(200).json({endpoints});
+    const data = await res.status(200).json({ endpoints });
     return data;
   } catch (err) {
-    next(err)
+    next(err);
   }
 });
 

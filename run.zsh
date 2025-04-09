@@ -1,9 +1,12 @@
 #!/bin/zsh
 
+# ESM loader magic (no shell-breaking quotes)
+LOADER="--import=data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('ts-node/esm', pathToFileURL('./'));"
+
 echo "🌱 Seeding the database..."
-NODE_OPTIONS="--loader ts-node/esm" node ./db/seeds/run-seed.ts
+node "$LOADER" ./db/seeds/run-seed.ts
 
 echo "🚀 Starting the server with nodemon (TS + ESM)..."
 npx nodemon --watch ./server \
   --ext ts \
-  --exec "node --loader ts-node/esm" ./server/listen.ts
+  --exec bash -c "node \"$LOADER\" ./server/server.ts"
