@@ -1,0 +1,5 @@
+{
+  "watch": ["src", "server", "routes", "db"],
+  "ext": "ts",
+  "exec": "ts-node-esm src/listen.ts"
+}
