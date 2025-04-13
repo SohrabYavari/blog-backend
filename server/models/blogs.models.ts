@@ -1,6 +1,7 @@
 import db from "../../db/connection.ts";
+import { BlogPosts } from "../../types/dataTypes.ts";
 
-export const fetchBlogs = async () => {
+export const fetchBlogs = async (): Promise<BlogPosts[]> => {
   const { rows } = await db.query(`
      SELECT 
       blogs.blog_id, 
