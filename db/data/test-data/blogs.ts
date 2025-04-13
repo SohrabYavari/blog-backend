@@ -2,6 +2,7 @@ import { BlogPosts } from "../../../types/dataTypes.ts";
 
 export const blogsData: BlogPosts[] = [
   {
+    blog_id: 1,
     title: "title one",
     topic: "slug one",
     author: "person two",
@@ -9,8 +10,10 @@ export const blogsData: BlogPosts[] = [
     votes: 0,
     blog_img_url: "",
     body: `markdown formatted post`,
+    comment_count: 0,
   },
   {
+    blog_id: 2,
     title: "title two",
     topic: "slug two",
     author: "person one",
@@ -18,8 +21,10 @@ export const blogsData: BlogPosts[] = [
     votes: 0,
     blog_img_url: "",
     body: `markdown formatted post`,
+    comment_count: 0,
   },
   {
+    blog_id: 3,
     title: "title three",
     topic: "slug one",
     author: "person two",
@@ -27,8 +32,10 @@ export const blogsData: BlogPosts[] = [
     votes: 0,
     blog_img_url: "",
     body: `markdown formatted post`,
+    comment_count: 0,
   },
   {
+    blog_id: 4,
     title: "title four",
     topic: "slug two",
     author: "person one",
@@ -36,5 +43,6 @@ export const blogsData: BlogPosts[] = [
     votes: 0,
     blog_img_url: "",
     body: `markdown formatted post`,
+    comment_count: 0,
   },
 ];

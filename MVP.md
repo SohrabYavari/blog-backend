@@ -15,6 +15,7 @@
 ### MVP 3: Get requests with parametric endpoints 
 - GET: /api/blog/:blog_id
 - GET: /api/blog/:blog_id/comments
+- GET: /api/users/:username
 - update /api endpoint.
 
 ### MVP 4: Get request queries

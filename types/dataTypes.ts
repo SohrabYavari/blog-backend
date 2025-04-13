@@ -1,4 +1,5 @@
 export type BlogPosts = {
+  blog_id: number;
   title: string;
   topic: string;
   author: string;
@@ -6,6 +7,7 @@ export type BlogPosts = {
   votes: number;
   blog_img_url: string;
   body: string;
+  comment_count: number;
 }
 
 export type BlogComments = {

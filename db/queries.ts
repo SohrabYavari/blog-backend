@@ -1,6 +1,9 @@
 import db from "./connection.ts";
 import format from "pg-format";
-import { convertTimestampToDate } from "../utils/utilFunctions.ts";
+import {
+  createRefObject,
+  convertTimestampToDate,
+} from "../utils/utilFunctions.ts";
 
 //* Types imports
 import {
@@ -10,9 +13,8 @@ import {
   BlogUsers,
 } from "../types/dataTypes.ts";
 
-
 //? Insert topics data into the database
-export const topicsQueries = ( topicsData: BlogTopics[]) => {
+export const topicsQueries = (topicsData: BlogTopics[]) => {
   if (!topicsData.length) return Promise.resolve();
 
   const topicsMapped = topicsData.map((topic) => {
@@ -50,7 +52,7 @@ export const usersQueries = (usersData: BlogUsers[]) => {
 //? Insert blogs data into the database
 export const blogsQueries = (blogsData: BlogPosts[]) => {
   if (!blogsData.length) return Promise.resolve();
-
+  
   const blogsMapped = blogsData.map((blog) => {
     const { created_at } = convertTimestampToDate(blog);
     return [
@@ -78,12 +80,18 @@ export const blogsQueries = (blogsData: BlogPosts[]) => {
 export const commentsQueries = (commentsData: BlogComments[]) => {
   if (!commentsData.length) return Promise.resolve();
 
+  const commentsRef = createRefObject({
+    array: commentsData,
+    key1: "blog_title",
+    key2: "blog_id",
+  });
+  
   const commentsMapped = commentsData.map((comment) => {
     const { created_at } = convertTimestampToDate(comment);
     return [
       comment.body,
       comment.author,
-      comment.blog_title,
+      commentsRef[comment.blog_title],
       comment.votes ?? 0,
       created_at,
     ];
